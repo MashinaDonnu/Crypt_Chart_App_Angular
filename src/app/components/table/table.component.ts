@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GetDataService} from "../../services/getData.service";
 import {Data} from "../../interfaces";
+import {tableData} from './shared'
 
 @Component({
   selector: 'app-table',
@@ -8,12 +9,15 @@ import {Data} from "../../interfaces";
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  data: Data;
+  items: Data;
+  tableData = tableData
   constructor(public getDataService: GetDataService) { }
 
   ngOnInit(): void {
-    this.data = this.getDataService.data;
-    console.log('Table component:', this.data)
+    this.items = this.getDataService.data.data[0].entries;
+    console.log('Table component:', this.items)
   }
+
+
 
 }

@@ -1,6 +1,6 @@
-import {Switch, Themes} from "../../interfaces"
+import {ViewData, Themes} from "../../interfaces"
 
-export const switchesArr: Array<Switch> = [
+export const switchesArr: Array<ViewData> = [
   {
     name: 'Percent',
     key: 'percent',

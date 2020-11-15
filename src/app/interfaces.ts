@@ -3,7 +3,7 @@ export interface Data {
   data: Array<any>
 }
 
-export interface Switch {
+export interface ViewData {
   name: string
   key: string
 }

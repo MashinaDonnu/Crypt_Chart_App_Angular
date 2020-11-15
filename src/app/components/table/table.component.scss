@@ -1,0 +1,42 @@
+@import "../../../styles/variables";
+
+.table-wrap {
+  width: 100%;
+  //padding: 0 10px;
+  margin: 50px 0;
+  background: #fff;
+  color: #222;
+  max-height: 350px;
+  overflow-y: scroll;
+  border-bottom: 2px solid #222;
+
+  table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    thead th,
+    tbody td {
+      padding: 15px;
+      border: 1px solid #ccc;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    tbody tr:nth-child(odd) {
+      background: #F7F7F7;
+    }
+    thead th {
+      background: $dark-blue;
+      color: #eee;
+      text-align: center;
+      position: sticky;
+      top: 0;
+
+      &:hover {
+        cursor: pointer;
+        background: #0A062D;
+        transition: background-color .5s;
+      }
+    }
+  }
+}
+
