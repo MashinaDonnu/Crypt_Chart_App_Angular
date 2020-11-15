@@ -1,0 +1,27 @@
+@mixin radio-button($color: #d1d3d1) {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: $color;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+@mixin radio-button-checked($color: #ffa500) {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: $color;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}

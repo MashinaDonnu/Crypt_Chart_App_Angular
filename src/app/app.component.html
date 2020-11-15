@@ -1,0 +1,9 @@
+<h1 class="app-title">Diagram</h1>
+<div class="content" *ngIf="!getDataService.loading; else loading">
+  <app-diagram></app-diagram>
+  <app-table></app-table>
+</div>
+
+<ng-template #loading>
+  <h1>Loading...</h1>
+</ng-template>

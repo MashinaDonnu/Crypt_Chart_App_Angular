@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="theme">
+    <div class="switches-theme">
+    <h3>Theme switcher</h3>
+      <div class="switches-theme__items">
+        <div class="switch-item" *ngFor="let name of themes; let i = index">
+          <strong>{{name | titlecase}}</strong>
+          <span class="input-wrap">
+            <input type="radio" name="theme-input" [value]="name" [checked]="i === 0" (change)="switchThemeHandler($event)">
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="diagram-content">
+    <div class="switches-values">
+      <h3>Display by:</h3>
+      <div class="switches-values__items">
+      <p *ngFor="let s of switches; let i = index">
+        <input
+          type="radio"
+          [checked]="i === 0"
+          [value]="s.key"
+          name="switch"
+          (change)="switchValueHandler($event)"
+          [id]="s.name"
+      >
+        <label [for]="s.name">
+          <span>{{s.name}}</span>
+        </label>
+      </p>
+      </div>
+    </div>
+    <div id="divChart">
+      <canvas id="diagram"></canvas>
+    </div>
+
+  </div>
+</div>

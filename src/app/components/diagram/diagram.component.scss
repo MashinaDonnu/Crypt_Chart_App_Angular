@@ -1,0 +1,83 @@
+@import "../../../styles/mixisns";
+@import "../../../styles/variables";
+
+.theme {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  .switches-theme {
+    h3 {
+      padding: 10px 0;
+      text-align: center;
+    }
+    .switches-theme__items {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      //margin-right: 20px;
+      width: 180px;
+      display: flex;
+      justify-content: space-between;
+
+      .switch-item {
+        display: flex;
+        flex-direction: column;
+        .input-wrap {
+          display: flex;
+          padding-top: 5px;
+          justify-content: center;
+          align-items: center;
+
+          input[type='radio']:after {
+            @include radio-button($white);
+            cursor: pointer;
+          }
+          input[type='radio'][value='blue']:checked:after {
+            @include radio-button-checked(#4660A5)
+          }
+          input[type='radio'][value='green']:checked:after {
+            @include radio-button-checked(#16A160)
+          }
+          input[type='radio'][value='grey']:checked:after {
+            @include radio-button-checked(#5D6063)
+          }
+        }
+      }
+    }
+  }
+}
+
+.diagram-content {
+    display: flex;
+    justify-content: space-around;
+
+  .switches-values {
+    width: 18%;
+    margin-top: 100px;
+    .switches-values__items {
+      padding-top: 10px;
+      p {
+        margin-bottom: 10px;
+        label {
+          cursor: pointer;
+          span {
+            margin-left: 10px;
+          }
+        }
+        input[type='radio']:after {
+          @include radio-button($white);
+          cursor: pointer;
+        }
+
+        input[type='radio']:checked:after {
+          @include radio-button-checked($red)
+        }
+
+      }
+    }
+  }
+  #divChart {
+    width: 80%;
+  }
+}
+
