@@ -1,9 +1,27 @@
 @import "../../../styles/variables";
 
+.filter-wrap {
+  margin: 50px 0 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  h4 {
+    font-size: 20px;
+  }
+  input {
+    border: 1px solid #B6B6B6;
+    width: 300px;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 16px;
+  }
+}
+
 .table-wrap {
   width: 100%;
   //padding: 0 10px;
-  margin: 50px 0;
+  margin-bottom: 100px;
   background: #fff;
   color: #222;
   max-height: 350px;
@@ -17,19 +35,53 @@
     thead th,
     tbody td {
       padding: 15px;
+      //height: 40px;
       border: 1px solid #ccc;
       font-weight: 600;
       font-size: 14px;
     }
     tbody tr:nth-child(odd) {
+      td {
+        padding: 15px;
+      }
       background: #F7F7F7;
     }
     thead th {
+      padding: 0 20px;
+      height: 50px;
       background: $dark-blue;
       color: #eee;
       text-align: center;
       position: sticky;
       top: 0;
+      .th-content {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        align-items: center;
+        .th-text {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .sort-icons {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 40px;
+          position: relative;
+          .up, .down {
+            position: absolute;
+          }
+          .up {
+            top: 4px;
+          }
+          .down {
+            bottom: 4px;
+          }
+        }
+      }
 
       &:hover {
         cursor: pointer;

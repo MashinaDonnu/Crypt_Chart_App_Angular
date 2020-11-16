@@ -1,17 +1,44 @@
 
 <div class="container">
+  <div class="filter-wrap">
+    <h4>Filter</h4>
+    <input type="text" [(ngModel)]="searchStr">
+  </div>
   <div class="table-wrap">
     <table>
         <thead>
-          <th *ngFor="let elem of tableData">{{elem.name}}</th>
+          <th
+            #th
+            *ngFor="let elem of tableData"
+            [attr.data-sort-type]="elem.sortType"
+            [attr.data-name]="elem.key"
+            (click)="sortHandler(th)"
+          >
+            <div class="th-content">
+              <div class="th-text">
+                {{elem.name}}
+              </div>
+              <div class="sort-icons" *ngIf="sortKey !== elem.key">
+                <span class="material-icons up" >arrow_drop_up</span>
+                <span class="material-icons down">arrow_drop_down</span>
+              </div>
+              <div class="sort-icons" *ngIf="sortKey == elem.key && sortOrder === 1">
+                <span class="material-icons up">arrow_drop_up</span>
+              </div>
+              <div class="sort-icons" *ngIf="sortKey == elem.key && sortOrder === 2">
+                <span class="material-icons down">arrow_drop_down</span>
+              </div>
+            </div>
+          </th>
         </thead>
-      <tbody>
-          <tr *ngFor="let item of items">
-              <td *ngFor="let elem of tableData">
-                {{item[elem.key]}}
-              </td>
-          </tr>
-      </tbody>
+        <tbody>
+            <tr *ngIf="items.length === 0">HHHHHHHHHHHHHHHHH</tr>
+            <tr *ngFor="let item of items | search: searchStr">
+                <td *ngFor="let elem of tableData">
+                  {{item[elem.key]}}
+                </td>
+            </tr>
+        </tbody>
     </table>
   </div>
 </div>
