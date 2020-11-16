@@ -7,6 +7,7 @@ import { TableComponent } from './components/table/table.component';
 import { HttpClientModule } from "@angular/common/http";
 import { SearchPipe } from './pipes/search.pipe';
 import {FormsModule} from "@angular/forms";
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {FormsModule} from "@angular/forms";
     DiagramComponent,
     TableComponent,
     SearchPipe,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
