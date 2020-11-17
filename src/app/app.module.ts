@@ -8,6 +8,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { SearchPipe } from './pipes/search.pipe';
 import {FormsModule} from "@angular/forms";
 import { LoaderComponent } from './components/loader/loader.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     TableComponent,
     SearchPipe,
     LoaderComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

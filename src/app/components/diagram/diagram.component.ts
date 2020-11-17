@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core'
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core'
 import {Chart} from 'node_modules/chart.js'
 import {GetDataService} from "../../services/getData.service"
 import { switchesArr } from './shared'
 import { themes } from  './shared'
-import {Data} from "../../interfaces";
+import {Data} from "../../interfaces"
 
 
 @Component({
@@ -19,28 +19,27 @@ export class DiagramComponent implements OnInit {
   activeSwitch = 'percent'
   activeTheme = 'blue'
 
+  @ViewChild('diagram', {static: true}) diagram: ElementRef;
   constructor(private dataService: GetDataService) { }
 
+
   ngOnInit(): void {
+    this.diagram.nativeElement.height = 210
     this.data = this.dataService.data
     this.drawDiagram()
   }
 
   drawDiagram() {
-
-    // console.log('DiagramComponent', this.dataService.data)
-
     const items = this.data.data[0].entries
-    //test
 
+    // получаем названия
     const names = items.map(item => item.name)
+    // отбираем по нужному фильтру
     const values = items.map(item => +item[this.activeSwitch])
     const maxIndex = values.indexOf(Math.max.apply(null, [...values]))
 
-    console.log('DiagramComponent', names)
-    console.log('Percents', values)
-    // const ctx = document.getElementById('diagram').getContext('2d');
-    const chart = new Chart('diagram', {
+    // рисуем график
+    new Chart(this.diagram.nativeElement, {
       type: 'bar',
       data: {
         labels: names,
@@ -62,7 +61,6 @@ export class DiagramComponent implements OnInit {
         },
         legend: {
           labels: {
-            // This more specific font property overrides the global property
             fontColor: '#303030'
           }
         },
@@ -75,7 +73,6 @@ export class DiagramComponent implements OnInit {
               ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
               ctx.textAlign = 'center';
               ctx.textBaseline = 'bottom';
-              console.log(1111, this.data)
 
               this.data.datasets.forEach(function (dataset, i) {
                 const meta = chartInstance.controller.getDatasetMeta(i);
@@ -84,10 +81,7 @@ export class DiagramComponent implements OnInit {
                   let posY = 5
                   if (maxIndex === index) {
                     posY = -20
-                    // bar._chart.config.options.defaultColor = '#fff'
-                    // bar._chart.config.options.defaultFontColor = '#fff'
                     bar._model.backgroundColor = 'red'
-                    console.log(4545, bar)
                   }
                   const data = dataset.data[index]
                   ctx.fillText(data, bar._model.x, bar._model.y - posY);
@@ -100,13 +94,17 @@ export class DiagramComponent implements OnInit {
   }
 
   switchValueHandler(event) {
-    console.log(event.target.value)
     this.activeSwitch = event.target.value
     this.drawDiagram()
   }
 
   switchThemeHandler(event) {
     this.activeTheme = event.target.value
+    this.drawDiagram()
+  }
+
+  bustHeightHendler() {
+    this.diagram.nativeElement.height = 500
     this.drawDiagram()
   }
 }

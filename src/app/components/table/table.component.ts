@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {GetDataService} from "../../services/getData.service";
-import {Data} from "../../interfaces";
+import { Component, OnInit } from '@angular/core'
+import {GetDataService} from "../../services/getData.service"
+import {Data} from "../../interfaces"
 import {tableData} from './shared'
 
 @Component({
@@ -19,7 +19,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = this.getDataService.data.data[0].entries
-    console.log('Table component:', this.items)
   }
 
   sortHandler(th) {
@@ -50,6 +49,7 @@ export class TableComponent implements OnInit {
       }
     }
 
+    // переключаем сортировку по нужному значению
     if (this.sortOrder === 2) {
       this.sortOrder = 1
     } else {
@@ -58,6 +58,5 @@ export class TableComponent implements OnInit {
     if (this.sortOrder === 2) {
       this.items.reverse()
     }
-    console.log(this.sortOrder)
   }
 }

@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container table-section">
   <div class="filter-wrap">
     <h4>Filter</h4>
     <input type="text" [(ngModel)]="searchStr">
@@ -9,10 +9,13 @@
         <thead>
           <th
             #th
-            *ngFor="let elem of tableData"
+            *ngFor="let elem of tableData;let i = index"
             [attr.data-sort-type]="elem.sortType"
             [attr.data-name]="elem.key"
             (click)="sortHandler(th)"
+            [ngClass]="{
+              'num': i === 0
+            }"
           >
             <div class="th-content">
               <div class="th-text">
@@ -32,9 +35,8 @@
           </th>
         </thead>
         <tbody>
-            <tr *ngIf="items.length === 0">HHHHHHHHHHHHHHHHH</tr>
             <tr *ngFor="let item of items | search: searchStr">
-                <td *ngFor="let elem of tableData">
+                <td *ngFor="let elem of tableData; let i = index" [ngClass]="{'num': i === 0}" [attr.aria-label]="elem.name">
                   {{item[elem.key]}}
                 </td>
             </tr>

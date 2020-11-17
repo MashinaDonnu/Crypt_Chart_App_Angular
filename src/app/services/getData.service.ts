@@ -9,15 +9,21 @@ import {Data} from "../interfaces";
 export class GetDataService {
   data:Data
   loading = false
+  error = null
   constructor(private http: HttpClient) {}
 
   getData() {
     this.loading = true
     this.http.get<Data>(environment.apiUrl).subscribe(data => {
-      console.log('Data:', data)
-      this.data = data
-      this.loading = false
-    })
+          console.log('Data:', data)
+          this.data = data
+          this.loading = false
+        },
+      error => {
+        this.loading = false
+        this.error = error
+      }
+    )
   }
 
 }

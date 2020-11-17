@@ -1,9 +1,13 @@
 <h1 class="app-title">Test task Angular</h1>
-<div class="content" *ngIf="!getDataService.loading; else loading">
-  <app-diagram></app-diagram>
-  <app-table></app-table>
-</div>
+<app-error *ngIf="getDataService.error; else content"></app-error>
 
-<ng-template #loading>
-  <app-loader></app-loader>
+<ng-template #content>
+  <div class="content" *ngIf="!getDataService.loading; else loading">
+    <app-diagram></app-diagram>
+    <app-table></app-table>
+  </div>
+
+  <ng-template #loading>
+    <app-loader></app-loader>
+  </ng-template>
 </ng-template>

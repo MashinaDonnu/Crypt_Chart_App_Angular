@@ -1,5 +1,7 @@
 @import "../../../styles/variables";
-
+.table-section {
+  min-height: 500px;
+}
 .filter-wrap {
   margin: 50px 0 20px 0;
   width: 100%;
@@ -20,7 +22,6 @@
 
 .table-wrap {
   width: 100%;
-  //padding: 0 10px;
   margin-bottom: 100px;
   background: #fff;
   color: #222;
@@ -35,60 +36,105 @@
     thead th,
     tbody td {
       padding: 15px;
-      //height: 40px;
       border: 1px solid #ccc;
       font-weight: 600;
       font-size: 14px;
     }
     tbody tr:nth-child(odd) {
-      td {
-        padding: 15px;
-      }
       background: #F7F7F7;
     }
-    thead th {
-      padding: 0 20px;
-      height: 50px;
-      background: $dark-blue;
-      color: #eee;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      .th-content {
-        display: flex;
-        justify-content: space-between;
-        height: 100%;
-        align-items: center;
-        .th-text {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .sort-icons {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          height: 40px;
-          position: relative;
-          .up, .down {
-            position: absolute;
+
+    thead {
+      th {
+          padding: 0 20px;
+          height: 50px;
+          background: $dark-blue;
+          color: #eee;
+          text-align: center;
+          position: sticky;
+          top: -1px;
+
+          .th-content {
+            display: flex;
+            justify-content: space-between;
+            height: 100%;
+            align-items: center;
+            .th-text {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            .sort-icons {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              height: 40px;
+              position: relative;
+              .up, .down {
+                position: absolute;
+                margin-left: 15px;
+                //padding-left: 10px;
+              }
+              .up {
+                top: 4px;
+              }
+              .down {
+                bottom: 4px;
+              }
+            }
           }
-          .up {
-            top: 4px;
-          }
-          .down {
-            bottom: 4px;
+
+          &:hover {
+            cursor: pointer;
+            background: #0A062D;
+            transition: background-color .5s;
           }
         }
       }
+    @media screen and (max-width: 520px) {
+      thead {
+        display: none;
+      }
+      tbody {
+        tr {
+          display: block;
+          margin-bottom: 1rem;
+          border-bottom: 2px solid #e8e9eb;
 
-      &:hover {
-        cursor: pointer;
-        background: #0A062D;
-        transition: background-color .5s;
+          td {
+            text-align: right;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding:10px 20px;
+            /* background: #000; */
+            white-space: nowrap;
+          }
+
+          td.num {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            background: $dark-blue;
+            color: $white;
+          }
+
+          td:before {
+            content: attr(aria-label);
+            font-weight: bold;
+            text-align: center;
+          }
+        }
       }
     }
+
   }
 }
 
+@media screen and (max-width: 520px) {
+  .table-wrap {
+    max-height: 450px;
+  }
+}
